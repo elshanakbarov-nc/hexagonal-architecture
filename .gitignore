@@ -1,0 +1,16 @@
+.gradle
+build/
+*.idea/
+*.iml
+*.log
+*.pid
+out
+target
+.serverless
+*.pid
+.classpath
+.project
+.settings
+bin
+node_modules
+dist
