@@ -2,5 +2,6 @@ rootProject.name = 'route-to-go'
 
 include 'route-service'
 include 'distance-service'
+include 'trip-service'
 
 
