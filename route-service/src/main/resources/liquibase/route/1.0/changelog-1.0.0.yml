@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create ROUTE_PLAN table
+      author: Elshan Akbarov
+      changes:
+        - createTable:
+            tableName: ROUTE_PLAN
+            columns:
+              - column:
+                  name: ID
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: USER_ID
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: LOCATION
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+
+        - addUniqueConstraint:
+            tableName: ROUTE_PLAN
+            columnNames: USER_ID
