@@ -1,7 +1,8 @@
 rootProject.name = 'route-to-go'
-
-include 'route-service'
-include 'distance-service'
 include 'trip-service'
+include 'booking-service'
+include 'accounting-service'
+include 'driver-service'
+include 'customer-service'
 
 
