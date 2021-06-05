@@ -1,0 +1,18 @@
+description = 'Payment Service'
+jar.archiveBaseName.set('payment-service')
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation project('infra')
+}
+
+springBoot {
+    mainClassName = 'com.example.paymentservice.PaymentServiceApplication'
+}
+
+bootRun {
+    if (project.hasProperty('args')) {
+        args project.args.split(',')
+    }
+}
