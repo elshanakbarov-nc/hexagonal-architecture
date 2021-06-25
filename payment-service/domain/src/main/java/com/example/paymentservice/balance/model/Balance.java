@@ -1,8 +1,6 @@
 package com.example.paymentservice.balance.model;
 
-import com.example.paymentservice.balance.BalanceRetrieveCommandHandler;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
