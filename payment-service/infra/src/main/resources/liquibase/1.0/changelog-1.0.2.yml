@@ -50,7 +50,3 @@ databaseChangeLog:
                   defaultValue: now()
                   constraints:
                     nullable: false
-
-        - addUniqueConstraint:
-            tableName: payment
-            columnNames: account_id

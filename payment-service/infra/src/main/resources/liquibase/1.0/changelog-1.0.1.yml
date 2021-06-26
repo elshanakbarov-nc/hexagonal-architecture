@@ -45,7 +45,3 @@ databaseChangeLog:
                   defaultValue: now()
                   constraints:
                     nullable: false
-
-        - addUniqueConstraint:
-            tableName: balance_transaction
-            columnNames: balance_id

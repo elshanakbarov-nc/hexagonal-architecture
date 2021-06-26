@@ -20,4 +20,8 @@ public class Balance {
     private LocalDateTime updatedAt;
 
 
+    public boolean isSufficient(BigDecimal amount){
+        return this.amount.add(amount).compareTo(BigDecimal.ZERO) >= 0;
+    }
+
 }

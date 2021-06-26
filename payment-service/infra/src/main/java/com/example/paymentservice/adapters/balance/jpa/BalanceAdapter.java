@@ -33,7 +33,7 @@ public class BalanceAdapter implements BalancePort {
     @Transactional
     public Balance update(Balance balance, BalanceTransactionCreate balanceTransactionCreate) {
         createBalanceTransaction(balance,balanceTransactionCreate);
-        return updateBalance(balance.withAmount(balance.getAmount().add(balanceTransactionCreate.getAmount())));
+        return updateBalance(balance.withAmount(balance.getAmount().add(balanceTransactionCreate.getAmountAsNumeric())));
     }
 
     private Balance updateBalance(Balance balance) {

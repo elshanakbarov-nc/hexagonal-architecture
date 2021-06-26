@@ -1,5 +1,6 @@
 package com.example.paymentservice.payment;
 
+import com.example.paymentservice.balance.BalanceValidator;
 import com.example.paymentservice.balance.command.BalanceRetrieve;
 import com.example.paymentservice.balance.command.BalanceTransactionCreate;
 import com.example.paymentservice.balance.model.Balance;
@@ -29,6 +30,8 @@ public class PaymentCreateCommandHandler implements CommandHandler<PaymentCreate
     public Payment handle(PaymentCreate paymentCreate) {
         var balanceTransactionCreate = buildBalanceTransactionCreate(paymentCreate);
         var balance = balanceRetrieveCommandHandler.handle(BalanceRetrieve.from(paymentCreate.getAccountId()));
+
+        BalanceValidator.validate(balance,balanceTransactionCreate);
 
         var payment = paymentPort.create(paymentCreate);
         balanceTransactionCreateCommandHandler.handle(balanceTransactionCreate);

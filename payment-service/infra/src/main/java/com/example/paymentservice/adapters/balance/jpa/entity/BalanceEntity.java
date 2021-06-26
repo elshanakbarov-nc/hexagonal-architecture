@@ -23,6 +23,7 @@ public class BalanceEntity extends AbstractEntity {
 
     public Balance toModel() {
         return Balance.builder()
+                .id(super.getId())
                 .accountId(accountId)
                 .amount(amount)
                 .createdAt(getCreatedAt())
