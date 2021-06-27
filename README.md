@@ -28,6 +28,24 @@ After successful deployment run following CURL commands
 curl -X GET http://localhost:8090/api/v1/balances?accountId=1
 ```
 
+```sh
+curl -X POST --header "Content-Type: application/json" -d '{
+  "accountId": 1,
+  "amount": 10,
+  "type": "DEPOSIT"
+}' http://localhost:8090/api/v1/balances
+```
+
+
+```sh
+curl -X POST --header "Content-Type: application/json" -d '{
+  "accountId": 1,
+  "price": 10,
+  "referenceCode": "123A"
+}' http://localhost:8090/api/v1/payments
+```
+
+
 
 
 
