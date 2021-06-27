@@ -8,6 +8,8 @@ Route-to-go is a trip sharing app. It's brought to life several days ago and its
 
 ### Setup
 
+First thing first you should have docker installed on your machine.
+
 In order to setup infra run following command. Then start spring application as usual
 
 
