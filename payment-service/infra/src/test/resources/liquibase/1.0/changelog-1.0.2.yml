@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create payment table
+      author: Elshan Akbarov
+      changes:
+        - createTable:
+            tableName: payment
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: account_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: decimal
+                  constraints:
+                    nullable: false
+              - column:
+                  name: reference_code
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: payment_state
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  defaultValue: now()
+                  constraints:
+                    nullable: false

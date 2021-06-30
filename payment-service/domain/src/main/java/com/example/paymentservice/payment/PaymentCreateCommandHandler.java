@@ -5,6 +5,7 @@ import com.example.paymentservice.balance.command.BalanceRetrieve;
 import com.example.paymentservice.balance.command.BalanceTransactionCreate;
 import com.example.paymentservice.balance.model.Balance;
 import com.example.paymentservice.balance.model.BalanceTransactionType;
+import com.example.paymentservice.common.DomainComponent;
 import com.example.paymentservice.common.commandhandler.CommandHandler;
 import com.example.paymentservice.payment.command.PaymentCreate;
 import com.example.paymentservice.payment.model.Payment;
@@ -16,9 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
-@Service
+@DomainComponent
 @RequiredArgsConstructor
-@ConditionalOnProperty(name = "commandhandler.enabled", havingValue = "true")
 public class PaymentCreateCommandHandler implements CommandHandler<PaymentCreate, Payment> {
 
     private final CommandHandler<BalanceRetrieve, Balance> balanceRetrieveCommandHandler;

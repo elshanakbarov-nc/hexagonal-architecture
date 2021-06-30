@@ -16,9 +16,9 @@ spring:
   liquibase:
     change-log: classpath:liquibase/changelog-master.yml
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:4306}/route_payment?createDatabaseIfNotExist=true
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/route_payment?createDatabaseIfNotExist=true
     username: root
-      password: password
+    password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
