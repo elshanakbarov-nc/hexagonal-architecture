@@ -6,8 +6,6 @@ import com.example.paymentservice.balance.port.BalancePort;
 import com.example.paymentservice.common.DomainComponent;
 import com.example.paymentservice.common.commandhandler.CommandHandler;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.stereotype.Service;
 
 @DomainComponent
 @RequiredArgsConstructor

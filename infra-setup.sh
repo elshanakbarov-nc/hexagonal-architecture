@@ -6,7 +6,7 @@ TEST_NETWORK='route_to_go_network'
 # DB
 TEST_DB_DATA='route_to_go_test_db_data'
 TEST_DB_NAME='route_to_go_test_db'
-TEST_DB_IMAGE='mysql:5.7'
+TEST_DB_IMAGE='mariadb:10.5.8'
 TEST_DB_PASSWORD='password'
 TEST_DB_PORT=4306
 

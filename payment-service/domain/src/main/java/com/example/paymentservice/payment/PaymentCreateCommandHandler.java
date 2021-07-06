@@ -12,9 +12,6 @@ import com.example.paymentservice.payment.model.Payment;
 import com.example.paymentservice.payment.port.PaymentPort;
 import lombok.extern.slf4j.Slf4j;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @DomainComponent
@@ -26,7 +23,6 @@ public class PaymentCreateCommandHandler implements CommandHandler<PaymentCreate
     private final PaymentPort paymentPort;
 
     @Override
-    @Transactional
     public Payment handle(PaymentCreate paymentCreate) {
         var balanceTransactionCreate = buildBalanceTransactionCreate(paymentCreate);
         var balance = balanceRetrieveCommandHandler.handle(BalanceRetrieve.from(paymentCreate.getAccountId()));
