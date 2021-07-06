@@ -1,5 +1,6 @@
 package com.example.paymentservice.common.commandhandler;
 
+import com.example.commons.commandhandler.CommandHandler;
 import com.example.paymentservice.balance.command.BalanceTransactionCreate;
 import com.example.paymentservice.balance.model.Balance;
 import com.example.paymentservice.balance.model.BalanceTransactionType;
@@ -14,7 +15,7 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 @ConditionalOnProperty(name = "commandhandler.enabled", havingValue = "false", matchIfMissing = true)
-public class FakeBalanceTransactionCreateCommandHandler implements CommandHandler<BalanceTransactionCreate, Balance>{
+public class FakeBalanceTransactionCreateCommandHandler implements CommandHandler<BalanceTransactionCreate, Balance> {
 
     private Map<Long,Balance> balanceMap = new HashMap<>();
 

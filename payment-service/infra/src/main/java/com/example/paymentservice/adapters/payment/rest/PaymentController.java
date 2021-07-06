@@ -1,10 +1,10 @@
 package com.example.paymentservice.adapters.payment.rest;
 
+import com.example.commons.commandhandler.CommandHandler;
 import com.example.paymentservice.adapters.payment.rest.dto.PaymentCreateRequest;
 import com.example.paymentservice.adapters.payment.rest.dto.PaymentResponse;
-import com.example.paymentservice.common.commandhandler.CommandHandler;
-import com.example.paymentservice.common.rest.BaseController;
-import com.example.paymentservice.common.rest.Response;
+import com.example.commons.rest.BaseController;
+import com.example.commons.rest.Response;
 import com.example.paymentservice.payment.command.PaymentCreate;
 import com.example.paymentservice.payment.model.Payment;
 import lombok.RequiredArgsConstructor;

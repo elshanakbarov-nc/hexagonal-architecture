@@ -1,7 +1,6 @@
 dependencies {
     implementation group: 'org.projectlombok', name: 'lombok'
 
-    implementation project(':commons:domain')
 
     annotationProcessor("org.projectlombok:lombok")
     testAnnotationProcessor("org.projectlombok:lombok")

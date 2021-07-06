@@ -1,7 +1,7 @@
 package com.example.paymentservice.balance.command;
 
+import com.example.commons.model.Command;
 import com.example.paymentservice.balance.model.BalanceTransactionType;
-import com.example.paymentservice.common.model.Command;
 import lombok.Builder;
 import lombok.Data;
 

@@ -1,6 +1,6 @@
 package com.example.paymentservice.adapters.balance.jpa.entity;
 
-import com.example.paymentservice.common.entity.AbstractEntity;
+import com.example.commons.entity.AbstractEntity;
 import com.example.paymentservice.balance.model.Balance;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.example.paymentservice.common.rest;
+package com.example.commons.rest;
 
 import java.util.List;
 

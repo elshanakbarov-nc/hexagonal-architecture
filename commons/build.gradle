@@ -1,0 +1,15 @@
+description = 'Commons'
+jar.archiveBaseName.set('commons')
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation project('infra')
+}
+
+
+bootRun {
+    if (project.hasProperty('args')) {
+        args project.args.split(',')
+    }
+}

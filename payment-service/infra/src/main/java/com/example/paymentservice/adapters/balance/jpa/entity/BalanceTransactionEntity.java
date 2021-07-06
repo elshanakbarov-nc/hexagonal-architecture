@@ -2,7 +2,7 @@ package com.example.paymentservice.adapters.balance.jpa.entity;
 
 import com.example.paymentservice.balance.model.BalanceTransaction;
 import com.example.paymentservice.balance.model.BalanceTransactionType;
-import com.example.paymentservice.common.entity.AbstractEntity;
+import com.example.commons.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;

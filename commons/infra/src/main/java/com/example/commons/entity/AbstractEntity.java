@@ -1,6 +1,6 @@
-package com.example.paymentservice.common.entity;
+package com.example.commons.entity;
 
-import com.example.paymentservice.common.model.Status;
+import com.example.commons.model.Status;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;

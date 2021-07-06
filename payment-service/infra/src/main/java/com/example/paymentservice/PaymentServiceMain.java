@@ -1,6 +1,6 @@
 package com.example.paymentservice;
 
-import com.example.paymentservice.common.DomainComponent;
+import com.example.commons.DomainComponent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;

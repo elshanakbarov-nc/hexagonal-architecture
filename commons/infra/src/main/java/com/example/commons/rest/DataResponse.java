@@ -1,10 +1,9 @@
-package com.example.paymentservice.common.rest;
+package com.example.commons.rest;
 
 import java.util.List;
 import java.util.Objects;
 
 public class DataResponse<T> {
-
     private List<T> items = List.of();
     private Integer page;
     private Integer size;

@@ -1,4 +1,4 @@
-package com.example.paymentservice.common.model;
+package com.example.commons.model;
 
 import java.util.stream.Stream;
 
