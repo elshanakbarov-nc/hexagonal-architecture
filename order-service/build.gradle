@@ -1,0 +1,18 @@
+description = 'Order Service'
+jar.archiveBaseName.set('order-service')
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation project('infra')
+}
+
+springBoot {
+    mainClassName = 'com.example.orderservice.OrderServiceApplication'
+}
+
+bootRun {
+    if (project.hasProperty('args')) {
+        args project.args.split(',')
+    }
+}
