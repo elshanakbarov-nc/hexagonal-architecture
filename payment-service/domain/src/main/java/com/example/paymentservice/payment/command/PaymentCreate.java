@@ -1,8 +1,6 @@
 package com.example.paymentservice.payment.command;
 
-import com.example.paymentservice.common.model.Command;
-import com.example.paymentservice.payment.model.Payment;
-import com.example.paymentservice.payment.model.PaymentState;
+import com.example.commons.model.Command;
 import lombok.Builder;
 import lombok.Data;
 

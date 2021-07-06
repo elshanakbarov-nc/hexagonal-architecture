@@ -1,4 +1,4 @@
-package com.example.paymentservice.common.rest;
+package com.example.commons.rest;
 
 public class Response<T> {
     private T data;

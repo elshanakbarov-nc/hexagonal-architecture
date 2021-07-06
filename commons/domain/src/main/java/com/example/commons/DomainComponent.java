@@ -1,4 +1,4 @@
-package com.example.paymentservice.common;
+package com.example.commons;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

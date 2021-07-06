@@ -3,5 +3,9 @@ include ':payment-service'
 include ':payment-service:domain'
 include ':payment-service:infra'
 
+include ':commons'
+include ':commons:domain'
+include ':commons:infra'
+
 
 

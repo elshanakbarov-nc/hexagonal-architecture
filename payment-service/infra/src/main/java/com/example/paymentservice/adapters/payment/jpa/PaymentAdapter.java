@@ -2,7 +2,7 @@ package com.example.paymentservice.adapters.payment.jpa;
 
 import com.example.paymentservice.adapters.payment.jpa.entity.PaymentEntity;
 import com.example.paymentservice.adapters.payment.jpa.repo.PaymentJpaRepo;
-import com.example.paymentservice.common.model.Status;
+import com.example.commons.model.Status;
 import com.example.paymentservice.payment.command.PaymentCreate;
 import com.example.paymentservice.payment.model.Payment;
 import com.example.paymentservice.payment.model.PaymentState;

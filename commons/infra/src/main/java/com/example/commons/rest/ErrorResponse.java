@@ -1,7 +1,6 @@
-package com.example.paymentservice.common.rest;
+package com.example.commons.rest;
 
 public class ErrorResponse {
-
     private String errorCode;
     private String errorDescription;
 

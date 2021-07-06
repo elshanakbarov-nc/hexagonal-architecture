@@ -1,10 +1,10 @@
 package com.example.paymentservice.balance;
 
+import com.example.commons.commandhandler.CommandHandler;
 import com.example.paymentservice.balance.command.BalanceTransactionCreate;
 import com.example.paymentservice.balance.model.Balance;
 import com.example.paymentservice.balance.port.BalancePort;
-import com.example.paymentservice.common.DomainComponent;
-import com.example.paymentservice.common.commandhandler.CommandHandler;
+import com.example.commons.DomainComponent;
 import lombok.RequiredArgsConstructor;
 
 @DomainComponent

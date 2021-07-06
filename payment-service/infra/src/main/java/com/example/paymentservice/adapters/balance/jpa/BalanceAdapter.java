@@ -1,12 +1,12 @@
 package com.example.paymentservice.adapters.balance.jpa;
 
+import com.example.commons.exception.ApiBusinessException;
 import com.example.paymentservice.adapters.balance.jpa.entity.BalanceTransactionEntity;
 import com.example.paymentservice.adapters.balance.jpa.repo.BalanceTransactionJpaRepo;
 import com.example.paymentservice.balance.command.BalanceTransactionCreate;
 import com.example.paymentservice.balance.model.Balance;
 import com.example.paymentservice.balance.port.BalancePort;
-import com.example.paymentservice.common.exception.PaymentApiBusinessException;
-import com.example.paymentservice.common.model.Status;
+import com.example.commons.model.Status;
 import com.example.paymentservice.adapters.balance.jpa.entity.BalanceEntity;
 import com.example.paymentservice.adapters.balance.jpa.repo.BalanceJpaRepo;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +38,7 @@ public class BalanceAdapter implements BalancePort {
 
     private Balance updateBalance(Balance balance) {
         var balanceEntity = balanceJpaRepo.findByAccountId(balance.getAccountId())
-                .orElseThrow(() -> new PaymentApiBusinessException("paymentapi.balance.notFound"));
+                .orElseThrow(() -> new ApiBusinessException("paymentapi.balance.notFound"));
 
         balanceEntity.setAmount(balance.getAmount());
         balanceEntity.setAccountId(balance.getAccountId());
