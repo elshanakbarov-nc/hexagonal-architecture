@@ -14,8 +14,8 @@ import javax.persistence.Table;
 
 @Setter
 @Getter
-@Entity(name = "order")
-@Table(name = "order")
+@Entity(name = "orders")
+@Table(name = "orders")
 @Where(clause = "status <> -1")
 public class OrderEntity extends AbstractEntity {
 

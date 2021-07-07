@@ -21,7 +21,6 @@ public class OrderAdapter implements OrderPort {
         orderEntity.setAccountId(createOrder.getAccountId());
         orderEntity.setRestaurantId(createOrder.getRestaurantId());
         orderEntity.setStatus(Status.ACTIVE);
-        System.out.println(orderEntity.toString());
         OrderEntity order = orderJpaRepo.save(orderEntity);
         return toModel(order);
     }

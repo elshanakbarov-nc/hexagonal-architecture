@@ -4,7 +4,7 @@ databaseChangeLog:
       author: Elshan Akbarov
       changes:
         - createTable:
-            tableName: order
+            tableName: orders
             columns:
               - column:
                   name: id
@@ -40,7 +40,3 @@ databaseChangeLog:
                   defaultValue: now()
                   constraints:
                     nullable: false
-
-        - addUniqueConstraint:
-            tableName: order
-            columnNames: account_id
