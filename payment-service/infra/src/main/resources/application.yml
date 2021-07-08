@@ -20,6 +20,15 @@ spring:
     username: root
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+    default-property-inclusion: non_null
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ADAPTERS

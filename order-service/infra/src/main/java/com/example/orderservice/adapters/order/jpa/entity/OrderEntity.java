@@ -4,7 +4,6 @@ import com.example.commons.entity.AbstractEntity;
 import com.example.orderservice.order.model.Order;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
