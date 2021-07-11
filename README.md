@@ -47,6 +47,13 @@ curl -X POST --header "Content-Type: application/json" -d '{
 }' http://localhost:8090/api/v1/payments
 ```
 
+```sh
+curl -X POST --header "Content-Type: application/json" -d '{
+  "accountId": 1,
+  "restaurantId": 10
+}' http://localhost:8091/api/v1/orders
+```
+
 
 
 
