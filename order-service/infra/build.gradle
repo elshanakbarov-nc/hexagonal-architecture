@@ -1,3 +1,5 @@
+apply plugin: 'spring-cloud-contract'
+
 dependencies {
     implementation project.parent.project("domain")
     implementation project(':commons:infra')
