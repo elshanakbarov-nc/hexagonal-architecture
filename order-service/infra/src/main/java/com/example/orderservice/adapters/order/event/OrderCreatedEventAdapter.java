@@ -19,10 +19,5 @@ public class OrderCreatedEventAdapter implements OrderCreatedEventPort {
     @Override
     public void publish(OrderCreatedEvent orderCreatedEvent) {
         boolean send = orderEventKafkaStream.orderCreatedOutput().send(MessageBuilder.withPayload(orderCreatedEvent).build());
-        if(send){
-            System.out.println("Message has been sent");
-        }else{
-            System.out.println("Message couldn't be sent");
-        }
     }
 }
