@@ -1,6 +1,6 @@
 package com.example.paymentservice.payment.model;
 
-import com.example.paymentservice.common.model.Command;
+import com.example.commons.model.Command;
 import lombok.*;
 
 import java.math.BigDecimal;

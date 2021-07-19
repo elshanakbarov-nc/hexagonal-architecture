@@ -10,6 +10,14 @@ TEST_DB_IMAGE='mariadb:10.5.8'
 TEST_DB_PASSWORD='password'
 TEST_DB_PORT=4306
 
+TEST_KAFKA_NAME='route_to_go_test_kafka'
+TEST_KAFKA_ENVS='--env KAFKA_BROKER_ID=1 --env KAFKA_ZOOKEEPER_CONNECT='route_to_go_test_zookeeper:2181' --env KAFKA_ADVERTISED_LISTENERS='PLAINTEXT://localhost:9092' --env KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 --env KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0 --env KAFKA_AUTO_CREATE_TOPICS_ENABLE=true'
+TEST_KAFKA_DATA='hexagonaldemo_test_kafka_data'
+KAFKA_DATA_PATH='var/lib/kafka/data'
+
+TEST_ZOOKEEPER_NAME='route_to_go_test_zookeeper'
+TEST_ZOOKEEPER_ENVS='--env ZOOKEEPER_CLIENT_PORT=2181 --env ZOOKEEPER_TICK_TIME=2000'
+
 if [ -n "$DB_PORT" ]; then
     echo "Database port is set as $DB_PORT"
     TEST_DB_PORT=$DB_PORT
@@ -94,6 +102,52 @@ down_db() {
     fi
 }
 
+#####################################
+# KAFKA
+#####################################
+up_kafka() {
+    if [[ ! $(isUp 9092) ]]; then
+        echo ">> starting: up kafka"
+        # shellcheck disable=SC2086
+        create_volume $TEST_KAFKA_DATA
+        docker run --network ${TEST_NETWORK} --name ${TEST_KAFKA_NAME} -v ${TEST_KAFKA_DATA}:/${KAFKA_DATA_PATH} -m 512m -p 9092:9092 -d ${TEST_KAFKA_ENVS} confluentinc/cp-kafka
+
+    else
+        echo ">> kafka is already up"
+    fi
+}
+
+down_kafka() {
+    if [[ ! $(isDown 9092) ]]; then
+        echo ">> down kafka"
+        docker rm -f ${TEST_KAFKA_NAME}
+        docker volume rm ${TEST_KAFKA_DATA}
+    else
+        echo ">> kafka is already down"
+    fi
+}
+
+up_zookeeper() {
+    if [[ ! $(isUp 2181) ]]; then
+        echo ">> up zookeeper"
+        # shellcheck disable=SC2086
+        docker run --network ${TEST_NETWORK} --name ${TEST_ZOOKEEPER_NAME} -m 512m -p 2181:2181 -d ${TEST_ZOOKEEPER_ENVS} zookeeper
+
+    else
+        echo ">> zookeeper is already up"
+    fi
+
+}
+
+down_zookeeper() {
+    if [[ ! $(isDown 2181) ]]; then
+        echo ">> down zookeeper"
+        docker rm -f ${TEST_ZOOKEEPER_NAME}
+    else
+        echo ">> zookeeper is already down"
+    fi
+}
+
 case "${1}" in
     "db")
         case "${2}" in
@@ -104,9 +158,13 @@ case "${1}" in
         case "${2}" in
         "up")
             echo Starting db && up_db;
+            echo Starting zookeeper && up_zookeeper;
+            echo Starting kafka && up_kafka;
             ;;
         "down")
             echo Stopping db && down_db;
+            echo Stopping zookeeper && down_zookeeper;
+            echo Stopping kafka && down_kafka;
             ;;
         esac
         ;;

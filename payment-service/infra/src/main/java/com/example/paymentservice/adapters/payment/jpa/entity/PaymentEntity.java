@@ -1,6 +1,6 @@
 package com.example.paymentservice.adapters.payment.jpa.entity;
 
-import com.example.paymentservice.common.entity.AbstractEntity;
+import com.example.commons.entity.AbstractEntity;
 import com.example.paymentservice.payment.model.Payment;
 import com.example.paymentservice.payment.model.PaymentState;
 import lombok.Getter;

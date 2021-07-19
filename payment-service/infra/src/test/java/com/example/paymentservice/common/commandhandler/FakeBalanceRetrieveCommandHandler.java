@@ -1,5 +1,6 @@
 package com.example.paymentservice.common.commandhandler;
 
+import com.example.commons.commandhandler.CommandHandler;
 import com.example.paymentservice.balance.command.BalanceRetrieve;
 import com.example.paymentservice.balance.model.Balance;
 import com.example.paymentservice.common.exception.PaymentApiBusinessException;
