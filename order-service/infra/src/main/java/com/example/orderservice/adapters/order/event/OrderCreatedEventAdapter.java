@@ -18,6 +18,6 @@ public class OrderCreatedEventAdapter implements OrderCreatedEventPort {
 
     @Override
     public void publish(OrderCreatedEvent orderCreatedEvent) {
-        boolean send = orderEventKafkaStream.orderCreatedOutput().send(MessageBuilder.withPayload(orderCreatedEvent).build());
+       orderEventKafkaStream.orderCreatedOutput().send(MessageBuilder.withPayload(orderCreatedEvent).build());
     }
 }
