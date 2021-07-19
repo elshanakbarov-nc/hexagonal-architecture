@@ -45,6 +45,24 @@ adapters:
     paymentPath: /api/v1/payments
 
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# SPRING CLOUD
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+cloud:
+  config:
+    enabled: false
+  stream:
+    kafka:
+      binder:
+        auto-create-topics: false
+        brokers: ${KAFKA_BROKER_HOST:localhost}:${KAFKA_BROKER_PORT:9092}
+    bindings:
+      orderCreatedOutput:
+        destination: orderCreated.test.topic
+
+
+
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # INFRA
@@ -52,6 +70,8 @@ adapters:
 
 server:
   port: 8091
+kafka:
+  enabled: true
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # LOGGING
