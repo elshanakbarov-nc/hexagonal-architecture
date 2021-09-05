@@ -7,6 +7,8 @@ import com.example.paymentservice.balance.port.BalancePort;
 import com.example.commons.DomainComponent;
 import lombok.RequiredArgsConstructor;
 
+import javax.transaction.Transactional;
+
 @DomainComponent
 @RequiredArgsConstructor
 public class BalanceTransactionCreateCommandHandler implements CommandHandler<BalanceTransactionCreate, Balance> {
@@ -14,6 +16,7 @@ public class BalanceTransactionCreateCommandHandler implements CommandHandler<Ba
     private final BalancePort balancePort;
 
     @Override
+    @Transactional
     public Balance handle(BalanceTransactionCreate balanceTransactionCreate) {
         var balance = balancePort.retrieve(balanceTransactionCreate.getAccountId());
         return balancePort.update(balance, balanceTransactionCreate);

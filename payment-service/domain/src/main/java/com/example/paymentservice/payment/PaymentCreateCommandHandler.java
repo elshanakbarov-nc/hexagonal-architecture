@@ -13,6 +13,8 @@ import com.example.paymentservice.payment.port.PaymentPort;
 import lombok.extern.slf4j.Slf4j;
 import lombok.RequiredArgsConstructor;
 
+import javax.transaction.Transactional;
+
 @Slf4j
 @DomainComponent
 @RequiredArgsConstructor
@@ -23,6 +25,7 @@ public class PaymentCreateCommandHandler implements CommandHandler<PaymentCreate
     private final PaymentPort paymentPort;
 
     @Override
+    @Transactional
     public Payment handle(PaymentCreate paymentCreate) {
         var balanceTransactionCreate = buildBalanceTransactionCreate(paymentCreate);
         var balance = balanceRetrieveCommandHandler.handle(BalanceRetrieve.from(paymentCreate.getAccountId()));
