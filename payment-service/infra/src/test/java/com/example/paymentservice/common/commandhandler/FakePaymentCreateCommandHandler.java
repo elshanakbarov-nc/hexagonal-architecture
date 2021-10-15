@@ -1,7 +1,6 @@
 package com.example.paymentservice.common.commandhandler;
 
 import com.example.commons.commandhandler.CommandHandler;
-import com.example.paymentservice.common.exception.PaymentApiBusinessException;
 import com.example.paymentservice.payment.command.PaymentCreate;
 import com.example.paymentservice.payment.model.Payment;
 import com.example.paymentservice.payment.model.PaymentState;
@@ -24,7 +23,7 @@ public class FakePaymentCreateCommandHandler implements CommandHandler<PaymentCr
 
     private void failedPaymentScenario(PaymentCreate paymentCreate) {
         if (paymentCreate.getAccountId().equals(PAYMENT_FAIL_ACCOUNT_ID)) {
-            throw new PaymentApiBusinessException("paymentapi.balance.notSufficient");
+            throw new RuntimeException("paymentapi.balance.notSufficient");
         }
     }
 

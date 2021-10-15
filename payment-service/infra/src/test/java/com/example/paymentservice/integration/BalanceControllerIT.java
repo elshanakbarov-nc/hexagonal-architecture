@@ -1,9 +1,9 @@
 package com.example.paymentservice.integration;
 
+import com.example.commons.rest.Response;
 import com.example.paymentservice.AbstractIT;
 import com.example.paymentservice.IT;
 import com.example.paymentservice.adapters.balance.rest.dto.BalanceResponse;
-import com.example.paymentservice.common.rest.Response;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
