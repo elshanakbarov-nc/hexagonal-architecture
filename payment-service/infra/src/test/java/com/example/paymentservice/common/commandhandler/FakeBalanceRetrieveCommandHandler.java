@@ -3,7 +3,6 @@ package com.example.paymentservice.common.commandhandler;
 import com.example.commons.commandhandler.CommandHandler;
 import com.example.paymentservice.balance.command.BalanceRetrieve;
 import com.example.paymentservice.balance.model.Balance;
-import com.example.paymentservice.common.exception.PaymentApiBusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
@@ -41,7 +40,7 @@ public class FakeBalanceRetrieveCommandHandler implements CommandHandler<Balance
 
     private void failedBalanceRetrieveScenario(BalanceRetrieve balanceRetrieve) {
         if (balanceRetrieve.getAccountId().equals(BALANCE_NOT_FOUND_ACCOUNT_ID)){
-            throw new PaymentApiBusinessException("paymentapi.balance.notFound");
+            throw new RuntimeException("paymentapi.balance.notFound");
         }
     }
 }
