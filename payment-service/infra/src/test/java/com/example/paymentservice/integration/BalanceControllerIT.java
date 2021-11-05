@@ -4,11 +4,14 @@ import com.example.commons.rest.Response;
 import com.example.paymentservice.AbstractIT;
 import com.example.paymentservice.IT;
 import com.example.paymentservice.adapters.balance.rest.dto.BalanceResponse;
+import com.example.paymentservice.adapters.balance.rest.dto.BalanceTransactionCreateRequest;
+import com.example.paymentservice.balance.model.BalanceTransactionType;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
 
@@ -31,6 +34,7 @@ public class BalanceControllerIT extends AbstractIT {
        // then
         assertThat(response).isNotNull();
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isNotNull();
 
         var balanceResponse = response.getBody().getData();
         assertThat(balanceResponse)
@@ -39,5 +43,38 @@ public class BalanceControllerIT extends AbstractIT {
     }
 
 
+    @Test
+    void should_deposit_withdraw_balance() {
+        updateBalance(1L, BalanceTransactionType.DEPOSIT, 50.0, 50.0);
+        updateBalance(1L, BalanceTransactionType.DEPOSIT, 10.0, 60.0);
+        updateBalance(1L, BalanceTransactionType.WITHDRAW, 10.0, 50.0);
+    }
+
+    private void updateBalance(Long accountId, BalanceTransactionType balanceTransactionType, double amount, double expectedAmount) {
+        // given
+        BalanceTransactionCreateRequest balanceTransactionCreateRequest = BalanceTransactionCreateRequest.builder()
+                .accountId(accountId)
+                .type(balanceTransactionType)
+                .amount(BigDecimal.valueOf(amount))
+                .build();
+
+        System.out.println(balanceTransactionCreateRequest.toString());
+
+        //when
+        ResponseEntity<Response<BalanceResponse>> response1 = testRestTemplate.exchange(
+                "/api/v1/balances",
+                HttpMethod.POST, new HttpEntity<>(balanceTransactionCreateRequest, null), balanceResponseType);
+
+        //then
+        assertThat(response1).isNotNull();
+        assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response1.getBody()).isNotNull();
+
+        assertThat(response1.getBody().getData()).isNotNull();
+        BalanceResponse balanceResponse1 = response1.getBody().getData();
+        assertThat(balanceResponse1)
+                .extracting("accountId", "amount")
+                .contains(accountId, BigDecimal.valueOf(expectedAmount));
+    }
 
 }

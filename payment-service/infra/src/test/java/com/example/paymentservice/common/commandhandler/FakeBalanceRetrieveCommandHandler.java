@@ -5,13 +5,14 @@ import com.example.paymentservice.balance.command.BalanceRetrieve;
 import com.example.paymentservice.balance.model.Balance;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+@Primary
 @ConditionalOnProperty(name = "commandhandler.enabled", havingValue = "false", matchIfMissing = true)
 public class FakeBalanceRetrieveCommandHandler implements CommandHandler<BalanceRetrieve, Balance> {
 
