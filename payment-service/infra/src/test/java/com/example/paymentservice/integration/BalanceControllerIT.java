@@ -58,8 +58,6 @@ public class BalanceControllerIT extends AbstractIT {
                 .amount(BigDecimal.valueOf(amount))
                 .build();
 
-        System.out.println(balanceTransactionCreateRequest.toString());
-
         //when
         ResponseEntity<Response<BalanceResponse>> response1 = testRestTemplate.exchange(
                 "/api/v1/balances",
