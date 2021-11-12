@@ -6,6 +6,7 @@ import com.example.paymentservice.balance.model.Balance;
 import com.example.paymentservice.balance.model.BalanceTransactionType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
+@Primary
 @ConditionalOnProperty(name = "commandhandler.enabled", havingValue = "false", matchIfMissing = true)
 public class FakeBalanceTransactionCreateCommandHandler implements CommandHandler<BalanceTransactionCreate, Balance> {
 

@@ -7,4 +7,6 @@ public interface PaymentPort {
 
     Payment create(PaymentCreate paymentCreate);
 
+    Payment retrieve(Long accountId);
+
 }

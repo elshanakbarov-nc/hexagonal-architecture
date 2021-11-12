@@ -1,4 +1,5 @@
-import com.example.paymentservice.TestConfig;
+package com.example.paymentservice;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
