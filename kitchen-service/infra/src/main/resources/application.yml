@@ -3,7 +3,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 spring:
   application:
-    name: payment-service
+    name: kitchen-service
   main:
     allow-bean-definition-overriding: true
   jpa:
@@ -16,7 +16,7 @@ spring:
   liquibase:
     change-log: classpath:liquibase/changelog-master.yml
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:4306}/payment?createDatabaseIfNotExist=true
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:4306}/kitchen?createDatabaseIfNotExist=true
     username: root
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -38,11 +38,34 @@ commandhandler:
   enabled: true
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# SPRING CLOUD
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  cloud:
+    stream:
+      kafka:
+        binder:
+          auto-create-topics: true
+          brokers: ${KAFKA_BROKER_HOST:localhost}:${KAFKA_BROKER_PORT:9092}
+        bindings:
+          orderCreatedOutput:
+            consumer:
+              startOffset: latest
+      bindings:
+        orderCreatedOutput:
+          destination: orderCreated.test.topic
+          group: hexagonaldemo-${random.int(100000)}
+
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # INFRA
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 server:
-  port: 8090
+  port: 8092
+kafka:
+  enabled: true
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # LOGGING

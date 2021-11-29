@@ -27,6 +27,7 @@ public class OrderAdapter implements OrderPort {
 
     private Order toModel(OrderEntity order) {
         return Order.builder()
+                .id(order.getId())
                 .accountId(order.getAccountId())
                 .restaurantId(order.getRestaurantId())
                 .build();

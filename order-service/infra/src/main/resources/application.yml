@@ -3,7 +3,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 spring:
   application:
-    name: atolye-order-service
+    name: order-service
   main:
     allow-bean-definition-overriding: true
   jpa:
