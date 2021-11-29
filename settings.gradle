@@ -1,10 +1,16 @@
-rootProject.name = 'route-to-go'
+rootProject.name = 'hexagonal-architecture'
+
 include ':payment-service'
 include ':payment-service:domain'
 include ':payment-service:infra'
+
 include ':order-service'
 include ':order-service:domain'
 include ':order-service:infra'
+
+include ':kitchen-service'
+include ':kitchen-service:domain'
+include ':kitchen-service:infra'
 
 include ':commons'
 include ':commons:domain'

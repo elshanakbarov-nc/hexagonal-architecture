@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create ticket table
+      author: Elshan Akbarov
+      changes:
+        - createTable:
+            tableName: ticket
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  defaultValue: now()
+                  constraints:
+                    nullable: false

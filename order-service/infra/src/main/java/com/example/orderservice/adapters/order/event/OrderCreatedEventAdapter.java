@@ -18,6 +18,7 @@ public class OrderCreatedEventAdapter implements OrderCreatedEventPort {
 
     @Override
     public void publish(OrderCreatedEvent orderCreatedEvent) {
-       orderEventKafkaStream.orderCreatedOutput().send(MessageBuilder.withPayload(orderCreatedEvent).build());
+        log.info("Sending orderCreatedEvent {}", orderCreatedEvent);
+        orderEventKafkaStream.orderCreatedOutput().send(MessageBuilder.withPayload(orderCreatedEvent).build());
     }
 }
