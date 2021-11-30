@@ -2,6 +2,9 @@
 
 ### Developing a microservices using hexagonal architecture.
 
+### Flow Diagram
+
+[![Flow Diagram](docs/images/diagram.png)](docs/images/diagram.png)
 
 ### Setup
 
