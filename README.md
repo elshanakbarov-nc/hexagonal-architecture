@@ -4,7 +4,7 @@
 
 ### Flow Diagram
 
-[![Flow Diagram](docs/images/diagram.png)](docs/images/diagram.png)
+[![Flow Diagram](docs/images/diagram.jpg)](docs/images/diagram.jpg)
 
 ### Setup
 
