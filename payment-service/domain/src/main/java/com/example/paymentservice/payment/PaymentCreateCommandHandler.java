@@ -1,5 +1,6 @@
 package com.example.paymentservice.payment;
 
+import com.example.commons.exception.ApiBusinessException;
 import com.example.paymentservice.balance.BalanceValidator;
 import com.example.paymentservice.balance.command.BalanceRetrieve;
 import com.example.paymentservice.balance.command.BalanceTransactionCreate;
@@ -27,17 +28,28 @@ public class PaymentCreateCommandHandler implements CommandHandler<PaymentCreate
     @Override
     @Transactional
     public Payment handle(PaymentCreate paymentCreate) {
-        var balanceTransactionCreate = buildBalanceTransactionCreate(paymentCreate);
-        var balance = balanceRetrieveCommandHandler.handle(BalanceRetrieve.from(paymentCreate.getAccountId()));
+        BalanceTransactionCreate balanceTransactionCreate = buildBalanceTransactionCreate(paymentCreate);
+        Balance balance = balanceRetrieveCommandHandler.handle(BalanceRetrieve.from(paymentCreate.getAccountId()));
 
         BalanceValidator.validate(balance,balanceTransactionCreate);
 
-        var payment = paymentPort.create(paymentCreate);
-        balanceTransactionCreateCommandHandler.handle(balanceTransactionCreate);
+        try{
 
-        log.info("Total {} paid from {}", paymentCreate.getPrice(), paymentCreate.getAccountId());
+            Payment payment = paymentPort.create(paymentCreate);
+            log.debug("Payment created for account: {}", payment.getAccountId());
 
-        return payment;
+            balanceTransactionCreateCommandHandler.handle(balanceTransactionCreate);
+            log.debug("Total {} paid from {}", payment.getPrice(), payment.getAccountId());
+
+            return payment;
+
+        }catch (Exception e){
+            log.error("Payment cannot be created due to errors.", e);
+
+            throw new ApiBusinessException("paymentapi.payment.cannotBeCreated");
+        }
+
+
     }
 
     private BalanceTransactionCreate buildBalanceTransactionCreate(PaymentCreate paymentCreate) {

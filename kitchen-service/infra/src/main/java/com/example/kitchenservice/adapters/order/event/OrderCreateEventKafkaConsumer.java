@@ -24,8 +24,7 @@ public class OrderCreateEventKafkaConsumer {
     public void consume(@Payload OrderCreatedEvent event){
         log.info("Order create event received: {} ", event);
         try{
-            TicketCreate ticket = TicketCreate.builder().orderId(event.getOrderId()).build();
-            ticketCreateVoidCommandHandler.handle(ticket);
+            ticketCreateVoidCommandHandler.handle(TicketCreate.fromEvent(event));
         }catch (Exception e){
             log.warn("Order {} is not created", event.getOrderId(), e);
         }
