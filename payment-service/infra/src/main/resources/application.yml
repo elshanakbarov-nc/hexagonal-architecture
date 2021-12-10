@@ -48,6 +48,8 @@ spring:
         ticketCreatedInput:
           destination: ticketCreated.test.topic
           group: hexagonaldemo-${random.int(100000)}
+        paymentCreatedOutput:
+          destination: paymentCreated.test.topic
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ADAPTERS
@@ -62,6 +64,8 @@ commandhandler:
 
 server:
   port: 8090
+kafka:
+  enabled: true
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # LOGGING

@@ -23,6 +23,7 @@ public class PaymentAdapter implements PaymentPort {
     public Payment create(PaymentCreate paymentCreate) {
         var paymentEntity = new PaymentEntity();
         paymentEntity.setAccountId(paymentCreate.getAccountId());
+        paymentEntity.setOrderId(paymentCreate.getOrderId());
         paymentEntity.setReferenceCode(paymentCreate.getReferenceCode());
         paymentEntity.setPrice(paymentCreate.getPrice());
         paymentEntity.setPaymentState(PaymentState.SUCCESS);
@@ -41,6 +42,7 @@ public class PaymentAdapter implements PaymentPort {
     private Payment toModel(PaymentEntity savedPaymentEntity) {
         return Payment.builder()
                 .id(savedPaymentEntity.getId())
+                .orderId(savedPaymentEntity.getOrderId())
                 .referenceCode(savedPaymentEntity.getReferenceCode())
                 .accountId(savedPaymentEntity.getAccountId())
                 .price(savedPaymentEntity.getPrice())

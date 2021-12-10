@@ -13,12 +13,14 @@ import java.math.BigDecimal;
 public class PaymentCreate implements Command {
 
     private Long accountId;
+    private Long orderId;
     private BigDecimal price;
     private String referenceCode;
 
     public static PaymentCreate fromEvent(TicketCreatedEvent event){
         return PaymentCreate.builder()
                 .accountId(event.getAccountId())
+                .orderId(event.getOrderId())
                 .price(event.getPrice())
                 .referenceCode("EVENT")
                 .build();

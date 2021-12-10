@@ -9,7 +9,9 @@ import com.example.paymentservice.balance.model.BalanceTransactionType;
 import com.example.commons.DomainComponent;
 import com.example.commons.commandhandler.CommandHandler;
 import com.example.paymentservice.payment.command.PaymentCreate;
+import com.example.paymentservice.payment.event.PaymentCreatedEvent;
 import com.example.paymentservice.payment.model.Payment;
+import com.example.paymentservice.payment.port.PaymentCreatedEventPort;
 import com.example.paymentservice.payment.port.PaymentPort;
 import lombok.extern.slf4j.Slf4j;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,7 @@ public class PaymentCreateCommandHandler implements CommandHandler<PaymentCreate
 
     private final CommandHandler<BalanceRetrieve, Balance> balanceRetrieveCommandHandler;
     private final CommandHandler<BalanceTransactionCreate, Balance> balanceTransactionCreateCommandHandler;
+    private final PaymentCreatedEventPort paymentNotificationPort;
     private final PaymentPort paymentPort;
 
     @Override
@@ -40,6 +43,8 @@ public class PaymentCreateCommandHandler implements CommandHandler<PaymentCreate
 
             balanceTransactionCreateCommandHandler.handle(balanceTransactionCreate);
             log.debug("Total {} paid from {}", payment.getPrice(), payment.getAccountId());
+
+            paymentNotificationPort.publish(PaymentCreatedEvent.from(payment));
 
             return payment;
 
