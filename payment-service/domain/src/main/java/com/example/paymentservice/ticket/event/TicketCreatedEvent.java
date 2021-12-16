@@ -1,4 +1,4 @@
-package com.example.kitchenservice.order.event;
+package com.example.paymentservice.ticket.event;
 
 import com.example.commons.model.Event;
 import lombok.*;
@@ -6,17 +6,17 @@ import lombok.*;
 import java.math.BigDecimal;
 
 @ToString
+@Builder
 @Setter
 @Getter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class OrderCreatedEvent implements Event {
+public class TicketCreatedEvent implements Event {
+    private Long ticketId;
     private Long orderId;
-    private Long paymentId;
     private Long accountId;
-    private Long restaurantId;
     private BigDecimal price;
+    private Long restaurantId;
     private String referenceCode;
 }

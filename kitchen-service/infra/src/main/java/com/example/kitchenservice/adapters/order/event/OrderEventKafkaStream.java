@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 @Component
 public interface OrderEventKafkaStream {
 
-    String ORDER_CREATE_INPUT = "orderCreatedOutput";
+    String ORDER_CREATE_INPUT = "orderCreatedInput";
 
     @Input
-    MessageChannel orderCreatedOutput();
+    MessageChannel orderCreatedInput();
 
 }

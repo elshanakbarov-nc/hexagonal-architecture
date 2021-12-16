@@ -21,6 +21,9 @@ public class PaymentEntity extends AbstractEntity {
     private Long accountId;
 
     @Column(nullable = false)
+    private Long orderId;
+
+    @Column(nullable = false)
     private BigDecimal price;
 
     @Column(nullable = false)
@@ -34,6 +37,7 @@ public class PaymentEntity extends AbstractEntity {
        return Payment.builder()
                 .id(super.getId())
                 .accountId(accountId)
+               .orderId(orderId)
                .price(price)
                .referenceCode(referenceCode)
                .paymentState(paymentState)

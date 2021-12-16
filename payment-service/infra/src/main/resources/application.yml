@@ -30,6 +30,27 @@ spring:
   resources:
     add-mappings: false
 
+
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # KAFKA
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  cloud:
+    stream:
+      kafka:
+        binder:
+          auto-create-topics: true
+          brokers: ${KAFKA_BROKER_HOST:localhost}:${KAFKA_BROKER_PORT:9092}
+        bindings:
+          ticketCreatedInput:
+            consumer:
+              startOffset: latest
+      bindings:
+        ticketCreatedInput:
+          destination: ticketCreated.test.topic
+          group: hexagonaldemo-${random.int(100000)}
+        paymentCreatedOutput:
+          destination: paymentCreated.test.topic
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ADAPTERS
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,6 +64,8 @@ commandhandler:
 
 server:
   port: 8090
+kafka:
+  enabled: true
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # LOGGING

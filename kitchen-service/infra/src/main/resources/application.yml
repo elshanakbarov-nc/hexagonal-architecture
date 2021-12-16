@@ -30,17 +30,9 @@ spring:
   resources:
     add-mappings: false
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# ADAPTERS
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-commandhandler:
-  enabled: true
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# SPRING CLOUD
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # SPRING CLOUD
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   cloud:
     stream:
       kafka:
@@ -48,13 +40,23 @@ commandhandler:
           auto-create-topics: true
           brokers: ${KAFKA_BROKER_HOST:localhost}:${KAFKA_BROKER_PORT:9092}
         bindings:
-          orderCreatedOutput:
+          orderCreatedInput:
             consumer:
               startOffset: latest
       bindings:
-        orderCreatedOutput:
+        orderCreatedInput:
           destination: orderCreated.test.topic
           group: hexagonaldemo-${random.int(100000)}
+        ticketCreatedOutput:
+          destination: ticketCreated.test.topic
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ADAPTERS
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+commandhandler:
+  enabled: true
 
 
 

@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create payment table
+      author: Elshan Akbarov
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: order_id
+                  type: bigint(16)
+                  constraints:
+                    nullable: false
+            tableName: payment

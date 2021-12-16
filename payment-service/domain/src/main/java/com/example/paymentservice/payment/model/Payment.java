@@ -16,6 +16,7 @@ public class Payment implements Command {
     private Long id;
     private LocalDateTime createdAt;
     private Long accountId;
+    private Long orderId;
     private BigDecimal price;
     private String referenceCode;
     private PaymentState paymentState;
