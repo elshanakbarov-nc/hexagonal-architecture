@@ -34,16 +34,21 @@ spring:
 # SPRING CLOUD
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   cloud:
-    config:
-      enabled: false
     stream:
       kafka:
         binder:
           auto-create-topics: false
           brokers: ${KAFKA_BROKER_HOST:localhost}:${KAFKA_BROKER_PORT:9092}
+        bindings:
+          paymentCreatedInput:
+            consumer:
+              startOffset: latest
       bindings:
         orderCreatedOutput:
           destination: orderCreated.test.topic
+        paymentCreatedInput:
+          destination: paymentCreated.test.topic
+          group: hexagonaldemo-${random.int(10000)}
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
