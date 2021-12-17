@@ -1,4 +1,4 @@
-package com.example.paymentservice.adapters.payment.jpa.event;
+package com.example.paymentservice.adapters.payment.event;
 
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
