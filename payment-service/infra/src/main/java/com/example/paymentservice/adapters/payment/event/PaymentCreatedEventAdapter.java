@@ -1,4 +1,4 @@
-package com.example.paymentservice.adapters.payment.jpa.event;
+package com.example.paymentservice.adapters.payment.event;
 
 import com.example.paymentservice.payment.event.PaymentCreatedEvent;
 import com.example.paymentservice.payment.port.PaymentCreatedEventPort;
